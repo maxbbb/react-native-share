@@ -6,7 +6,7 @@
 //
 
 #import "SnapchatShare.h"
-#import <AVFoundation/AVFoundation.h>
+//#import <AVFoundation/AVFoundation.h>
 @import SCSDKCreativeKit;
 @import Photos;
 
@@ -62,6 +62,11 @@ RCT_EXPORT_MODULE();
         } else if ([options[@"url"] rangeOfString:@"jpg"].location != NSNotFound && ![options objectForKey:@"sticker"]) {
             NSURL * imageUrl = [NSURL URLWithString: options[@"url"]];
             /* Main image content to be used in Snap */
+            printf("Image url");
+            NSString *myString = imageUrl.absoluteString;
+
+            NSLog(@"%@", myString);
+
             SCSDKSnapPhoto *image = [[SCSDKSnapPhoto alloc] initWithImageUrl:imageUrl];
             SCSDKPhotoSnapContent *imageContent = [[SCSDKPhotoSnapContent alloc] initWithSnapPhoto:image];
             // we use title instead of message because it will get appended to url
